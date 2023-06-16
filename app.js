@@ -1,3 +1,8 @@
+const form = $('#form');
+const selectForm = $('#jokes');
+const button = $('submit');
+
+
 const fatJokes = [
   "Yo mama's so fat, when she fell I didn't laugh, but the sidewalk cracked up.",
   "Yo mama's so fat, when she skips a meal, the stock market drops.",
@@ -116,4 +121,3 @@ const generateJoke = arr => {
   return `${arr[randomIndex]}`;
 };
 
-console.log(generateJoke(allJokes));
