@@ -1,7 +1,7 @@
-const form = $('#form');
-const selectForm = $('#jokes');
-const button = $('submit');
-
+const form = $("#form");
+const selectForm = $("#jokes");
+const button = $("button");
+const p = $("#joke");
 
 const fatJokes = [
   "Yo mama's so fat, when she fell I didn't laugh, but the sidewalk cracked up.",
@@ -110,8 +110,8 @@ const generalJokes = [
 
 const allJokes = [fatJokes, uglyJokes, stupidJokes, generalJokes];
 
-const generateJoke = arr => {
-  const randomIndex = Math.floor(Math.random() * (arr.length));
+const generateJoke = (arr) => {
+  const randomIndex = Math.floor(Math.random() * arr.length);
   if (arr === allJokes) {
     for (let i = 0; i < arr.length; i++) {
       return `${arr[randomIndex][i]}`;
@@ -121,3 +121,15 @@ const generateJoke = arr => {
   return `${arr[randomIndex]}`;
 };
 
+const getOption = () => {
+  const selectedOption = selectForm.val();
+
+  generateJoke(selectedOption);
+};
+
+const onChange = () => {
+  let value = selectForm.val();
+  console.log('value', value);
+}
+
+onChange();
