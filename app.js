@@ -102,3 +102,18 @@ const generalJokes = [
   "Yo mama house is so dirty, she has to wipe her feet before she goes outside.",
   "Yo mama is so mean, even Hello Kitty said goodbye.",
 ];
+
+const allJokes = [fatJokes, uglyJokes, stupidJokes, generalJokes];
+
+const generateJoke = arr => {
+  const randomIndex = Math.floor(Math.random() * (arr.length));
+  if (arr === allJokes) {
+    for (let i = 0; i < arr.length; i++) {
+      return `${arr[randomIndex][i]}`;
+    }
+  }
+
+  return `${arr[randomIndex]}`;
+};
+
+console.log(generateJoke(allJokes));
