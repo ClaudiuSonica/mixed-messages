@@ -1,7 +1,7 @@
-const form = $("#form");
-const selectForm = $("#jokes");
-const button = $("button");
-const p = $("#joke");
+const form = document.getElementById("form");
+const selectForm = document.getElementById("jokes");
+const button = document.getElementById("btn");
+const p = document.getElementById("joke");
 
 const fatJokes = [
   "Yo mama's so fat, when she fell I didn't laugh, but the sidewalk cracked up.",
@@ -114,22 +114,43 @@ const generateJoke = (arr) => {
   const randomIndex = Math.floor(Math.random() * arr.length);
   if (arr === allJokes) {
     for (let i = 0; i < arr.length; i++) {
-      return `${arr[randomIndex][i]}`;
+      return arr[randomIndex][i];
     }
   }
 
-  return `${arr[randomIndex]}`;
+  return arr[randomIndex];
 };
 
-const getOption = () => {
-  const selectedOption = selectForm.val();
-
-  generateJoke(selectedOption);
-};
-
+let e = document.getElementById("jokes");
 const onChange = () => {
-  let value = selectForm.val();
-  console.log('value', value);
-}
+  let value = e.value;
 
-onChange();
+  switch (value) {
+    case "fatJokes":
+      return fatJokes;
+      break;
+    case "uglyJokes":
+      return uglyJokes;
+      break;
+    case "stupidJokes":
+      return stupidJokes;
+      break;
+    case "generalJokes":
+      return generalJokes;
+      break;
+    case "allJokes":
+      return allJokes;
+      break;
+    default:
+      return 'Sorry no more jokes';
+      break;
+  }
+};
+e.onchange = onChange;
+
+
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  p.textContent = generateJoke(onChange());
+});
